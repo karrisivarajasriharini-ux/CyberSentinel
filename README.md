@@ -106,9 +106,4 @@ CyberSentinel/
 
 \## 📸 Dashboard
 
-
-
-!\[CyberSentinel Dashboard](screenshots/dashboard.png)
-
-
-
+![CyberSentinel Dashboard](screenshots/dashboard.png)
