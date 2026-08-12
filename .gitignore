@@ -2,6 +2,7 @@ venv/
 __pycache__/
 *.pyc
 .env
-database/*.db
+*.db
 *.sqlite
 *.sqlite3
+monitored_files/*.txt
