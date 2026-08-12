@@ -104,3 +104,11 @@ CyberSentinel/
 
 └── README.md
 
+\## 📸 Dashboard
+
+
+
+!\[CyberSentinel Dashboard](screenshots/dashboard.png)
+
+
+
