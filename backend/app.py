@@ -1,4 +1,3 @@
-```python
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 import sqlite3
@@ -830,4 +829,4 @@ def health():
         "status": "online",
         "service": "CyberSentinel"
     }
-```
+
