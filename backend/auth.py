@@ -7,134 +7,304 @@ USERNAME = "admin"
 PASSWORD = "CyberSentinel@123"
 
 
+# ==========================================================
+# LOGIN PAGE
+# ==========================================================
+
 @router.get("/login", response_class=HTMLResponse)
 def login_page():
 
     return """
-    <!DOCTYPE html>
-    <html>
-    <head>
+<!DOCTYPE html>
+<html>
+<head>
 
-        <title>CyberSentinel Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <style>
+    <title>CyberSentinel Login</title>
 
-            body {
-                margin: 0;
-                font-family: Arial, sans-serif;
-                background: #0f172a;
+    <style>
 
-                display: flex;
-                justify-content: center;
-                align-items: center;
+        * {
+            box-sizing: border-box;
+        }
 
-                min-height: 100vh;
-            }
+        body {
+            margin: 0;
+            min-height: 100vh;
 
-            .login-box {
+            font-family: Arial, sans-serif;
 
-                width: 360px;
+            background:
+                radial-gradient(circle at 20% 20%, #12315c 0%, transparent 30%),
+                radial-gradient(circle at 80% 80%, #0b4f55 0%, transparent 30%),
+                #020617;
 
-                background: white;
+            color: #e2e8f0;
 
-                padding: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-                border-radius: 15px;
+            overflow: hidden;
+        }
 
-                box-shadow:
-                    0 10px 30px
-                    rgba(0,0,0,0.3);
-            }
+        .grid {
+            position: fixed;
+            inset: 0;
 
-            h1 {
-                text-align: center;
-                margin-bottom: 10px;
-            }
+            background-image:
+                linear-gradient(rgba(56,189,248,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56,189,248,0.05) 1px, transparent 1px);
 
-            p {
-                text-align: center;
-                color: #64748b;
-                margin-bottom: 25px;
-            }
+            background-size: 45px 45px;
 
-            input {
+            pointer-events: none;
+        }
 
-                width: 100%;
+        .login-box {
 
-                padding: 12px;
+            width: 390px;
+            max-width: 90%;
 
-                margin-bottom: 15px;
+            padding: 40px;
 
-                border: 1px solid #cbd5e1;
+            background: rgba(15, 23, 42, 0.92);
 
-                border-radius: 8px;
+            border: 1px solid #1e40af;
 
-                box-sizing: border-box;
-            }
+            border-radius: 18px;
 
-            button {
+            box-shadow:
+                0 0 35px rgba(14,165,233,0.15),
+                inset 0 0 25px rgba(14,165,233,0.03);
 
-                width: 100%;
+            position: relative;
+            z-index: 2;
+        }
 
-                padding: 12px;
+        .logo {
+            text-align: center;
+            margin-bottom: 25px;
+        }
 
-                border: none;
+        .shield {
+            font-size: 52px;
+            margin-bottom: 10px;
+        }
 
-                border-radius: 8px;
+        .logo h1 {
+            margin: 0;
 
-                background: #2563eb;
+            font-size: 28px;
 
-                color: white;
+            color: white;
+        }
 
-                font-size: 16px;
+        .logo h1 span {
+            color: #38bdf8;
+        }
 
-                cursor: pointer;
-            }
+        .logo p {
+            margin-top: 8px;
 
-            button:hover {
-                background: #1d4ed8;
-            }
+            color: #64748b;
 
-        </style>
+            font-size: 13px;
+        }
 
-    </head>
+        .status {
 
-    <body>
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-        <div class="login-box">
+            gap: 8px;
 
-            <h1>🛡️ CyberSentinel</h1>
+            margin-bottom: 25px;
 
-            <p>Security Monitoring Login</p>
+            color: #4ade80;
 
-            <form method="post" action="/login">
+            font-size: 12px;
+            font-weight: bold;
+        }
 
-                <input
-                    type="text"
-                    name="username"
-                    placeholder="Username"
-                    required
-                >
+        .dot {
 
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    required
-                >
+            width: 8px;
+            height: 8px;
 
-                <button type="submit">
-                    Login
-                </button>
+            background: #22c55e;
 
-            </form>
+            border-radius: 50%;
 
-        </div>
+            box-shadow: 0 0 10px #22c55e;
+        }
 
-    </body>
-    </html>
-    """
+        label {
 
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #94a3b8;
+
+            font-size: 13px;
+        }
+
+        input {
+
+            width: 100%;
+
+            padding: 13px 14px;
+
+            margin-bottom: 18px;
+
+            border-radius: 9px;
+
+            border: 1px solid #334155;
+
+            background: #020617;
+
+            color: white;
+
+            outline: none;
+
+            font-size: 14px;
+
+            transition: 0.2s;
+        }
+
+        input:focus {
+
+            border-color: #38bdf8;
+
+            box-shadow:
+                0 0 0 2px rgba(56,189,248,0.1);
+        }
+
+        button {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 9px;
+
+            background: linear-gradient(
+                90deg,
+                #2563eb,
+                #0891b2
+            );
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        button:hover {
+
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 0 20px rgba(14,165,233,0.3);
+        }
+
+        .footer {
+
+            text-align: center;
+
+            margin-top: 22px;
+
+            font-size: 11px;
+
+            color: #475569;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="grid"></div>
+
+<div class="login-box">
+
+    <div class="logo">
+
+        <div class="shield">🛡️</div>
+
+        <h1>Cyber<span>Sentinel</span></h1>
+
+        <p>Security Operations Center</p>
+
+    </div>
+
+
+    <div class="status">
+
+        <span class="dot"></span>
+
+        SECURE AUTHENTICATION PORTAL
+
+    </div>
+
+
+    <form method="post" action="/login">
+
+        <label>Username</label>
+
+        <input
+            type="text"
+            name="username"
+            placeholder="Enter username"
+            autocomplete="username"
+            required
+        >
+
+
+        <label>Password</label>
+
+        <input
+            type="password"
+            name="password"
+            placeholder="Enter password"
+            autocomplete="current-password"
+            required
+        >
+
+
+        <button type="submit">
+            🔐 Secure Login
+        </button>
+
+    </form>
+
+
+    <div class="footer">
+        CyberSentinel Security Monitoring Platform
+    </div>
+
+</div>
+
+</body>
+</html>
+"""
+
+
+# ==========================================================
+# LOGIN
+# ==========================================================
 
 @router.post("/login")
 def login(
@@ -145,26 +315,51 @@ def login(
     if username == USERNAME and password == PASSWORD:
 
         response = RedirectResponse(
-            url="/",
+            url="/dashboard",
             status_code=303
         )
 
         response.set_cookie(
             key="cybersentinel_auth",
             value="authenticated",
-            httponly=True
+            httponly=True,
+            samesite="lax"
         )
 
         return response
 
     return HTMLResponse(
         """
-        <h2>❌ Invalid username or password</h2>
-        <a href="/login">Try again</a>
+        <html>
+        <body style="
+            background:#020617;
+            color:white;
+            font-family:Arial;
+            text-align:center;
+            padding-top:100px;
+        ">
+
+        <h2 style="color:#ef4444;">
+            ❌ Invalid username or password
+        </h2>
+
+        <a
+            href="/login"
+            style="color:#38bdf8;"
+        >
+            Try Again
+        </a>
+
+        </body>
+        </html>
         """,
         status_code=401
     )
 
+
+# ==========================================================
+# LOGOUT
+# ==========================================================
 
 @router.get("/logout")
 def logout():
@@ -175,7 +370,7 @@ def logout():
     )
 
     response.delete_cookie(
-        "cybersentinel_auth"
+        key="cybersentinel_auth"
     )
 
     return response
