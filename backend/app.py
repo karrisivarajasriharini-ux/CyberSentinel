@@ -58,7 +58,7 @@ def get_events():
                 threat_type,
                 risk_score,
                 severity
-            FROM events
+            FROM security_events
             ORDER BY id DESC
         """)
 
@@ -829,4 +829,3 @@ def health():
         "status": "online",
         "service": "CyberSentinel"
     }
-
