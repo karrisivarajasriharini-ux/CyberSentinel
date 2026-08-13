@@ -53,3 +53,6 @@ CyberSentinel/
 ├── requirements.txt
 ├── .gitignore
 └── README.md
+## 📊 Dashboard
+
+![CyberSentinel Dashboard](screenshots/dashboard.png)
