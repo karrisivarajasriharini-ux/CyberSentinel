@@ -52,7 +52,7 @@ CyberSentinel/
 ├── monitor.py
 ├── requirements.txt
 ├── .gitignore
-└── README.md
+└── README.me
 ## 📊 Dashboard
 
 ![CyberSentinel Dashboard](screenshots/dashboard.png)
